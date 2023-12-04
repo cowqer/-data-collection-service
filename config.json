@@ -1,7 +1,7 @@
 {
- "IMU_Port":"/dev/ttyUSB2",
+ "IMU_Port":"/dev/ttyUSB1",
  "GPS_Port":"/dev/ttyACM0",
- "Lidar_Port":"/dev/ttyUSB0",
+ "Lidar_Port":"/dev/ttyUSB2",
  "Camera_Port":0,
  "timeStamp":100,
  "CameraID": "5a4ae8f0-c14b-4cfe-b5e9-2abf7a95353c",

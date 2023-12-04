@@ -1,5 +1,5 @@
-/home/fusion/Desktop/data-collection/build/CMakeFiles/rebuild_cache.dir
-/home/fusion/Desktop/data-collection/build/CMakeFiles/edit_cache.dir
-/home/fusion/Desktop/data-collection/build/CMakeFiles/rec0.dir
-/home/fusion/Desktop/data-collection/build/CMakeFiles/pub0.dir
-/home/fusion/Desktop/data-collection/build/CMakeFiles/coll.dir
+/home/fusion/Desktop/data-collection-service/build/CMakeFiles/rebuild_cache.dir
+/home/fusion/Desktop/data-collection-service/build/CMakeFiles/edit_cache.dir
+/home/fusion/Desktop/data-collection-service/build/CMakeFiles/rec0.dir
+/home/fusion/Desktop/data-collection-service/build/CMakeFiles/pub0.dir
+/home/fusion/Desktop/data-collection-service/build/CMakeFiles/coll.dir

@@ -394,9 +394,9 @@ mqtt/message.h
 mqtt/topic.h
 ../include/mqtt/mqtt/mqtt/topic.h
 
-/home/fusion/Desktop/data-collection/src/rec_0.cpp
+/home/fusion/Desktop/data-collection-service/src/rec_0.cpp
 mqtt/async_client.h
-/home/fusion/Desktop/data-collection/src/mqtt/async_client.h
+/home/fusion/Desktop/data-collection-service/src/mqtt/async_client.h
 iostream
 -
 fstream

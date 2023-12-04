@@ -394,7 +394,7 @@ mqtt/message.h
 mqtt/topic.h
 ../include/mqtt/mqtt/mqtt/topic.h
 
-/home/fusion/Desktop/data-collection/src/pub_0.cpp
+/home/fusion/Desktop/data-collection-service/src/pub_0.cpp
 iostream
 -
 fstream
@@ -406,5 +406,5 @@ chrono
 thread
 -
 mqtt/async_client.h
-/home/fusion/Desktop/data-collection/src/mqtt/async_client.h
+/home/fusion/Desktop/data-collection-service/src/mqtt/async_client.h
 

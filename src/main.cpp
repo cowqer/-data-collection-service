@@ -8,8 +8,8 @@ int main() {
     threads[0] = std::thread(File_init);
     threads[1] = std::thread(Data_writing);
     threads[2] = std::thread(run_mqtt_client,"fusion-dc.net");
-    threads[3] = std::thread(Camera_collection);
-    threads[4] = std::thread(Radar_collection);
+    //threads[3] = std::thread(Camera_collection);
+    //threads[4] = std::thread(Radar_collection);
     threads[5] = std::thread(Lidar_collection);
     threads[6] = std::thread(GPS_collection);
     threads[7] = std::thread(IMU_collection);
@@ -19,8 +19,8 @@ int main() {
     //初始H5根组
      H5::H5File file = H5_init();
     // 初始化Sensor
-    Camera_init(file);
-    Radar_init(file);
+  //Camera_init(file);
+    //Radar_init(file);
     Lidar_init(file);
     GPS_init(file);
     IMU_init(file);
@@ -89,11 +89,11 @@ void Data_writing(void)
                   }
                   int NowTimestamp = currentTimestamp;
                    // 存储图片到指定Camera_x中
-                   Camera_Data_writing(0, NowTimestamp);
+                   //Camera_Data_writing(0, NowTimestamp);
                    // 存储到指定Lidar_x中
                    Lidar_Data_writing(0, NowTimestamp);
                    // 存储到指定Radar_x中
-                   Radar_Data_writing(0, NowTimestamp);
+                   //Radar_Data_writing(0, NowTimestamp);
                    // 存储到指定GPS中
                    GPS_Data_writing(0, NowTimestamp); 
                    // 存储到指定IMU中
@@ -113,8 +113,8 @@ void File_init(void)
                   //初始H5根组
                   H5::H5File file = H5_init();
                   // 初始化Sensor
-                  Camera_init(file);
-                  Radar_init(file);
+                  //Camera_init(file);
+                 // Radar_init(file);
                   Lidar_init(file);
                   GPS_init(file);
                   IMU_init(file);
