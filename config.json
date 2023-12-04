@@ -1,0 +1,17 @@
+{
+ "IMU_Port":"/dev/ttyUSB2",
+ "GPS_Port":"/dev/ttyACM0",
+ "Lidar_Port":"/dev/ttyUSB0",
+ "Camera_Port":0,
+ "timeStamp":100,
+ "CameraID": "5a4ae8f0-c14b-4cfe-b5e9-2abf7a95353c",
+ "IMUID": "2fd50718-6d2b-4a72-ae95-4f6b8589f1db",
+ "GPSID": "5c48d0c8-b9a2-4995-b68d-8532f8f138f5",
+ "RadarID": "c6c5c6ac-0141-4b67-9373-408d5f22c120",
+ "LidarID": "5b4d1814-d155-4185-9b7c-e28b7e87a625",
+ "VehicleID": "76a95f14-afbb-4d5e-a0f6-6b4066a1f2fe",
+ "image_Width":640,
+ "image_Height":480,
+ "Lidar_line":1,
+ "Lidar_DataWidth":420
+}
