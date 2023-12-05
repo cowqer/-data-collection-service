@@ -70,7 +70,7 @@ int main() {
         const std::string topic = "upload";//topic name
         
         while (true) {
-            send_hdf5_file("Data.h5", topic, client);
+            send_hdf5_file("Data_0.h5", topic, client);
             id_nums++;
             std::cout << "File " << id_nums << " sent, press Q to pause, E to resume" << std::endl;
             std::this_thread::sleep_for(std::chrono::seconds(200));
