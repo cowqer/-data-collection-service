@@ -1,6 +1,4 @@
-# DATE_COLLECTION of FUSION 
-
-
+# DATE_COLLECTION of FUSION （AMD64）
 
 ## Getting started
 ```
@@ -11,22 +9,24 @@ cmake & make
 #or 
 ./runtest.sh
 ```
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # Add to environment   please modify the path to the really path of your device 
 ## !!!
-export LD_LIBRARY_PATH=/home/love32/Desktop/Database/data-collection-service/lib/mqtt/linux_amd64:/lib/mqtt/linux_amd64:/home/love32/Desktop/Database/data-collection-service/lib/hdf5/lib_amd64:/home/love32/Desktop/Database/data-collection-service/lib/etc:$LD_LIBRARY_PATH
+```
+export LD_LIBRARY_PATH=
+/'the/path/to'/data-collection-service/lib/mqtt/amd64: \
+/'the/path/to'/data-collection-service/lib/hdf5/amd64: \
+/'the/path/to'/data-collection-service/lib/etc: \
+/'the/path/to'/data-collection-service/lib/opencv/amd64: \
+$LD_LIBRARY_PATH
+```
 ## IF ERROR: no found libpthread_nonshared.a(choose one of below commads):
 ```
 ar cr /usr/lib64/libpthread_nonshared.a
 ln -s libpthread.a libpthread_nonshared.a
 ```
-## Cross Compile Command 
+## Cross Compile Command tips
 ```
 arm-linux-gnueabihf-gcc -I/path/to/your/include -L/path/to/your/lib -lyourlibrary your_source.c -o /path/to/your/executable/your_executable_name
-
 
 arm-linux-gnueabihf-gcc -I./include/mqtt -I./include/openssl -L/home/cq/Desktop/git/data-collection-service/lib/mqtt/arrch64/mqttc/lib -L/home/cq/Desktop/git/data-collection-service/lib/mqtt/arrch64/mqttcpp ./src/pub_0.cpp -o ./arm_test/pub0 -lpaho-mqttpp3 -lpaho-mqtt3as -lpaho-mqtt3c -lssl -lcrypto -lstdc++
 
@@ -43,7 +43,6 @@ arm-linux-gnueabihf-gcc \
   -lssl \
   -lcrypto \
   -lstdc++
-
 
 
 ./config no-asm shared no-async --prefix=/home/cq/Desktio/arm_openssl --cross-compile-prefix=arm-linux-gnueabihf
@@ -134,126 +133,6 @@ For open source projects, say how it is licensed.
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
 
-
-## backup
-cmake_minimum_required(VERSION 3.5)
-project(HDF5)
-
-include(FetchContent)
-FetchContent_Declare(
-    json
-    GIT_REPOSITORY https://github.com/nlohmann/json.git
-    GIT_TAG v3.10.2  # 或者你选择的版本
-)
-FetchContent_MakeAvailable(json)
-
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_COMPILER g++)
-# 禁用系统环境路径
-set(CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH OFF)
-# 禁用系统库和头文件路径
-set(CMAKE_FIND_USE_SYSTEM_INCLUDE_PATH OFF)
-set(CMAKE_FIND_USE_SYSTEM_LIBRARY_PATH OFF)
-
-set(PLATFORM "amd64")  # 设置默认平台为amd64
-if(CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
-    set(PLATFORM "aarch64")  # 如果是aarch64平台，则覆盖默认值为aarch64
-
-endif()
-
-set(MQTT_LIBRARY_PATH "${CMAKE_SOURCE_DIR}/lib/mqtt/${PLATFORM}")
-set(HDF5_LIBRARY_PATH "${CMAKE_SOURCE_DIR}/lib/hdf5/${PLATFORM}")
-set(OPENCV_LIBRARY_PATH "${CMAKE_SOURCE_DIR}/lib/opencv/${PLATFORM}")
-
-find_path(HDF5_INCLUDE_DIRS NAMES H5Cpp.h PATHS "${CMAKE_SOURCE_DIR}/include/hdf5")
-find_path(OPENCV_INCLUDE_DIRS NAMES opencv2/opencv.hpp PATHS "${CMAKE_SOURCE_DIR}/include/opencv")
-find_path(MQTT_INCLUDE_DIRS NAMES mqtt/async_client.h PATHS "${CMAKE_SOURCE_DIR}/include/mqtt")
-
-include_directories(${HDF5_INCLUDE_DIRS})
-include_directories(${MQTT_INCLUDE_DIRS})
-include_directories(${OPENCV_INCLUDE_DIRS})
-
-set(SRC_LIST
-    src/main.cpp
-    src/sensors/Camera.cpp
-    src/sensors/Lidar.cpp
-    src/sensors/Radar.cpp
-    src/sensors/GPS.cpp
-    src/sensors/IMU.cpp
-    src/sensors/mqtt.cpp
-    )
-
-add_executable(hdf5 ${SRC_LIST})
-add_executable(pub0 src/pub_0.cpp)
-add_executable(rec0 src/rec_0.cpp)
-add_executable(cv_test src/opencv_test.cpp)
-
-#message(STATUS "HDF5_LIBRARIES22: ${HDF5_LIBRARIES}")
-message(STATUS "OpenCV_Include_DIRS: ${OPENCV_INCLUDE_DIRS}")
-message(STATUS "OpenCV_Libraries: ${OPENCV_LIBRARY_PATH}")
-message(STATUS "HDF5_include_DIRS: ${HDF5_INCLUDE_DIRS}")
-message(STATUS "HDF5_LIBRARIES: ${HDF5_LIBRARY_PATH}")
-message(STATUS "MqttCpp_Include: ${MQTT_INCLUDE_DIRS}!")
-message(STATUS "MqttCpp_Libraries: ${MQTT_LIBRARY_PATH}")
-
-
-
-target_link_libraries(pub0
-    -L${MQTT_LIBRARY_PATH}
-    -lpaho-mqttpp3
-    -lpaho-mqtt3as
-    )
-target_link_libraries(rec0
-    -L${MQTT_LIBRARY_PATH}
-    -lpaho-mqttpp3
-    -lpaho-mqtt3as
-    )
-
-target_link_libraries(hdf5 
-    -L${HDF5_LIBRARY_PATH}
-    -L${MQTT_LIBRARY_PATH}
-    -L${OPENCV_LIBRARY_PATH}
-    -lpaho-mqttpp3
-    -lpaho-mqtt3as 
-    opencv_imgproc
-    opencv_core
-    opencv_imgcodecs
-    opencv_highgui
-    -lopencv_videoio
-    -lhdf5_cpp
-    -lhdf5_serial 
-    -pthread
-    ${OPENCV_LIBRARIES}
-)
-
-
-target_link_libraries(cv_test
-    -L${OPENCV_LIBRARY_PATH}
-    opencv_imgproc
-    opencv_core
-    opencv_imgcodecs
-    opencv_highgui
-    -lopencv_videoio
-)
-
-target_include_directories(hdf5 PRIVATE ${json_SOURCE_DIR}/include)
-
- /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5_cpp.so;
- /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5.so;
- /usr/local/lib/libcrypto.so;
- /usr/lib/x86_64-linux-gnu/libcurl.so;
- /usr/lib/x86_64-linux-gnu/libpthread.a;
- /usr/lib/x86_64-linux-gnu/libsz.so;
- /usr/lib/x86_64-linux-gnu/libz.so;
- /usr/lib/x86_64-linux-gnu/libdl.a;
- /usr/lib/x86_64-linux-gnu/libm.so
- 
- 
- 
- 
- 
- 
  
  
  
