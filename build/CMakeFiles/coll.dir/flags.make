@@ -6,5 +6,5 @@ CXX_FLAGS =  -pthread   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/fusion/Desktop/data-collection/include/hdf5 -I/home/fusion/Desktop/data-collection/include/mqtt -I/home/fusion/Desktop/data-collection/include/opencv -I/home/fusion/Desktop/data-collection/include/json -I/home/fusion/Desktop/data-collection/include 
+CXX_INCLUDES = -I/home/cq/Desktop/data-collection/include/hdf5 -I/home/cq/Desktop/data-collection/include/mqtt -I/home/cq/Desktop/data-collection/include/opencv -I/home/cq/Desktop/data-collection/include/json -I/home/cq/Desktop/data-collection/include 
 
