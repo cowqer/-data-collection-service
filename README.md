@@ -9,8 +9,8 @@ cmake & make
 #or 
 ./runtest.sh
 ```
-# Add to environment   please modify the path to the really path of your device 
-## !!!
+# Add to environment    
+## !!!please modify " the path to " into the really path of your device
 ```
 export LD_LIBRARY_PATH=
 /'the/path/to'/data-collection-service/lib/mqtt/amd64: \
