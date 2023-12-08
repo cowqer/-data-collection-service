@@ -1,6 +1,4 @@
-# DATE_COLLECTION of FUSION 
-
-
+# DATE_COLLECTION of FUSION （AARCH64）
 
 ## Getting started
 ```
