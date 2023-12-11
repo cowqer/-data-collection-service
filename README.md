@@ -1,6 +1,4 @@
-# DATE_COLLECTION of FUSION 
-
-
+# DATE_COLLECTION of FUSION （AMD64）
 
 ## Getting started
 ```
@@ -11,12 +9,11 @@ cmake & make
 #or 
 ./runtest.sh
 ```
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# Add to environment   please modify the path to the really path of your device 
-## !!!
+# Add to environment    
+## !!!please modify " the path to " into the really path of your device
+```
+
 export LD_LIBRARY_PATH=
 /'the/path/to'/data-collection-service/lib/mqtt/amd64: \
 /'the/path/to'/data-collection-service/lib/hdf5/amd64: \
@@ -24,17 +21,19 @@ export LD_LIBRARY_PATH=
 /'the/path/to'/data-collection-service/lib/opencv/amd64: \
 $LD_LIBRARY_PATH
 
+
 export LD_LIBRARY_PATH=/home/cq/data-collection-service/lib/mqtt/amd64:/home/cq/data-collection-service/lib/hdf5/amd64:/home/cq/data-collection-service/lib/etc:/home/cq/data-collection-service/lib/opencv/amd64:$LD_LIBRARY_PATH
+
+```
 
 ## IF ERROR: no found libpthread_nonshared.a(choose one of below commads):
 ```
 ar cr /usr/lib64/libpthread_nonshared.a
 ln -s libpthread.a libpthread_nonshared.a
 ```
-## Cross Compile Command 
+## Cross Compile Command tips
 ```
 arm-linux-gnueabihf-gcc -I/path/to/your/include -L/path/to/your/lib -lyourlibrary your_source.c -o /path/to/your/executable/your_executable_name
-
 
 arm-linux-gnueabihf-gcc -I./include/mqtt -I./include/openssl -L/home/cq/Desktop/git/data-collection-service/lib/mqtt/arrch64/mqttc/lib -L/home/cq/Desktop/git/data-collection-service/lib/mqtt/arrch64/mqttcpp ./src/pub_0.cpp -o ./arm_test/pub0 -lpaho-mqttpp3 -lpaho-mqtt3as -lpaho-mqtt3c -lssl -lcrypto -lstdc++
 
@@ -51,7 +50,6 @@ arm-linux-gnueabihf-gcc \
   -lssl \
   -lcrypto \
   -lstdc++
-
 
 
 ./config no-asm shared no-async --prefix=/home/cq/Desktio/arm_openssl --cross-compile-prefix=arm-linux-gnueabihf
@@ -142,9 +140,6 @@ For open source projects, say how it is licensed.
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
 
-
-
- 
  
  
  
