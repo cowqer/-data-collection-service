@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/fusion/Desktop/data-collection/src/pub_0.cpp" "/home/fusion/Desktop/data-collection/build/CMakeFiles/pub0.dir/src/pub_0.cpp.o"
+  "/home/cq/Desktop/data-collection/src/pub_0.cpp" "/home/cq/Desktop/data-collection/build/CMakeFiles/pub0.dir/src/pub_0.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -15,6 +15,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include/opencv"
   "../include/json"
   "../include"
+  "../include/x264"
   )
 
 # Targets to which this target links.

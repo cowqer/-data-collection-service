@@ -11,7 +11,11 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 /*
- * Purpose: The public header file for the Windows driver
+ * Programmer:  Scott Wegner
+ *		Based on code by Robb Matzke
+ *              Thursday, May 24 2007
+ *
+ * Purpose:	The public header file for the windows driver.
  */
 #ifndef H5FDwindows_H
 #define H5FDwindows_H
@@ -44,7 +48,7 @@ extern "C" {
  *          comes.
  *
  *          Only the Windows driver is tested on Windows systems; other drivers
- *          are used at the application's and the user's risk.
+ *          are used at the application’s and the user’s risk.
  *
  *          Furthermore, the Windows driver is tested and available only on
  *          Windows systems; it is not available on non-Windows systems.

@@ -10,27 +10,39 @@ set(CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH OFF)
 set(CMAKE_FIND_USE_SYSTEM_INCLUDE_PATH OFF)
 set(CMAKE_FIND_USE_SYSTEM_LIBRARY_PATH OFF)
 
-set(PLATFORM "aarch64")  
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread")
+set(PLATFORM "amd64")  
+
+if(CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
+
+    # set cross-compiler toolchain 
+    message("ARM 64-bit architecture detected.")
+    set(CMAKE_SYSTEM_NAME Linux)
+    set(CMAKE_C_COMPILER /usr/bin/aarch64-linux-gnu-gcc)
+    set(CMAKE_CXX_COMPILER /usr/bin/aarch64-linux-gnu-g++)
+    set(PLATFORM "aarch64") 
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")  
+
+endif()
 
 set(MQTT_LIBRARY_PATH "${CMAKE_SOURCE_DIR}/lib/mqtt/${PLATFORM}")
 set(HDF5_LIBRARY_PATH "${CMAKE_SOURCE_DIR}/lib/hdf5/${PLATFORM}")
 set(OPENCV_LIBRARY_PATH "${CMAKE_SOURCE_DIR}/lib/opencv/${PLATFORM}")
 set(ETC_LIBRARY_PATH "${CMAKE_SOURCE_DIR}/lib/etc")
-set(BOOST_INCLUDE_DIRS "${CMAKE_SOURCE_DIR}/include")
+set(X264_LIBRARY_PATH "${CMAKE_SOURCE_DIR}/lib/x264/${PLATFORM}")
 
 find_path(BOOST_INCLUDE_DIRS NAMES boost/asio.hpp PATHS "${CMAKE_SOURCE_DIR}/include")
 find_path(HDF5_INCLUDE_DIRS NAMES H5Cpp.h PATHS "${CMAKE_SOURCE_DIR}/include/hdf5")
 find_path(OPENCV_INCLUDE_DIRS NAMES opencv2/opencv.hpp PATHS "${CMAKE_SOURCE_DIR}/include/opencv")
 find_path(MQTT_INCLUDE_DIRS NAMES mqtt/async_client.h PATHS "${CMAKE_SOURCE_DIR}/include/mqtt")
 find_path(JSON_INCLUDE_DIRS NAMES nlohmann/json.hpp PATHS "${CMAKE_SOURCE_DIR}/include/json")
+find_path(X264_INCLUDE_DIRS NAMES x264.h PATHS "${CMAKE_SOURCE_DIR}/include/x264")
 
 include_directories(${HDF5_INCLUDE_DIRS})
 include_directories(${MQTT_INCLUDE_DIRS})
 include_directories(${OPENCV_INCLUDE_DIRS})
 include_directories(${JSON_INCLUDE_DIRS})
 include_directories(${BOOST_INCLUDE_DIRS})
+include_directories(${X264_INCLUDE_DIRS})
 
 set(SRC_LIST
     src/main.cpp
@@ -48,31 +60,22 @@ add_executable(rec0 src/rec_0.cpp)
 
 message(STATUS "PLATFORM: ${PLATFORM}")
 message(STATUS "CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}")
-
-message(STATUS "HDF5_include_DIRS: ${HDF5_INCLUDE_DIRS}")
-message(STATUS "MqttCpp_Include_DIRS: ${MQTT_INCLUDE_DIRS}")
 message(STATUS "OpenCV_Include_DIRS: ${OPENCV_INCLUDE_DIRS}")
-message(STATUS "JSON_include_DIRS: ${JSON_INCLUDE_DIRS}")
-message(STATUS "BOOST_include_DIRS: ${BOOST_INCLUDE_DIRS}")
-
-message(STATUS "ETC_LIBS: ${ETC_LIBRARY_PATH}")
 message(STATUS "OpenCV_LIB: ${OPENCV_LIBRARY_PATH}")
+message(STATUS "HDF5_include_DIRS: ${HDF5_INCLUDE_DIRS}")
 message(STATUS "HDF5_LIB: ${HDF5_LIBRARY_PATH}")
+message(STATUS "MqttCpp_Include_DIRS: ${MQTT_INCLUDE_DIRS}")
 message(STATUS "MqttCpp_LIB: ${MQTT_LIBRARY_PATH}")
+message(STATUS "JSON_include_DIRS: ${JSON_INCLUDE_DIRS}!!")
+message(STATUS "boost_include: ${ETC_LIBRARY_PATH}!!")
+message(STATUS "x264_include: ${X264_INCLUDE_DIRS}!!")
 
-link_directories(
-    ${HDF5_LIBRARY_PATH}
-    ${MQTT_LIBRARY_PATH}
-    ${OPENCV_LIBRARY_PATH}
-    
-)
 
 set(COMMON_LIBRARIES
     -lpaho-mqttpp3
     -lpaho-mqtt3as
     -lpaho-mqtt3c
-    /usr/lib/aarch64-linux-gnu/libssl.so.1.1
-
+    -lssl
 )
 
 target_link_libraries(pub0
@@ -90,18 +93,21 @@ target_link_libraries(coll PRIVATE
     -L${HDF5_LIBRARY_PATH}
     -L${MQTT_LIBRARY_PATH}
     -L${OPENCV_LIBRARY_PATH}
-    #-L${ETC_LIBRARY_PATH}
+    -L${ETC_LIBRARY_PATH}
+    -L${X264_LIBRARY_PATH}
     -lopencv_imgproc
     -lopencv_core
     -lopencv_imgcodecs
     -lopencv_highgui
     -lopencv_videoio
     ${COMMON_LIBRARIES}
-    -lz
     -lsz
+    -laec
     -lhdf5
     -lhdf5_cpp
-    -lhdf5_hl
+    -lhdf5_serial
     -lcrypto
+    -lpthread
+    -lx264
 )
 
