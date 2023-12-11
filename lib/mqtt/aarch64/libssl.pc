@@ -1,0 +1,9 @@
+libdir=/home/cq/Desktop/MQTT/pahoMqttProject/openssl-master
+includedir=/home/cq/Desktop/MQTT/pahoMqttProject/openssl-master/include
+
+Name: OpenSSL-libssl
+Description: Secure Sockets Layer and cryptography libraries
+Version: 3.3.0-dev
+Requires.private: libcrypto
+Libs: -L${libdir} -lssl
+Cflags: -I${includedir}
