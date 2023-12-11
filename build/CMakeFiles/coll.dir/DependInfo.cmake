@@ -21,6 +21,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include/opencv"
   "../include/json"
   "../include"
+  "../include/x264"
   )
 
 # Targets to which this target links.

@@ -230,6 +230,9 @@ MQTT_INCLUDE_DIRS:PATH=/home/cq/Desktop/data-collection/include/mqtt
 //Path to a file.
 OPENCV_INCLUDE_DIRS:PATH=/home/cq/Desktop/data-collection/include/opencv
 
+//Path to a file.
+X264_INCLUDE_DIRS:PATH=/home/cq/Desktop/data-collection/include/x264
+
 
 ########################
 # INTERNAL cache entries

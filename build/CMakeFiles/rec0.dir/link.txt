@@ -1,1 +1,1 @@
-g++   -pthread   -pthread CMakeFiles/rec0.dir/src/rec_0.cpp.o  -o rec0  -L/home/cq/Desktop/data-collection/lib/mqtt/amd64 -lpaho-mqttpp3 -lpaho-mqtt3as -lpaho-mqtt3c -lssl 
+g++     CMakeFiles/rec0.dir/src/rec_0.cpp.o  -o rec0  -L/home/cq/Desktop/data-collection/lib/mqtt/amd64 -lpaho-mqttpp3 -lpaho-mqtt3as -lpaho-mqtt3c -lssl 
