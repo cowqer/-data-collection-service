@@ -1,15 +1,14 @@
 # DATE_COLLECTION of FUSION （AMD64）
-
+Use MQTT and HDF5 to collect sensors' data 
+then ,pack them in .hdf5 file and compress the file 
+at last, use MQTT to send to the server client's topic 
 ## Getting started
 ```
 mkdir build 
 cd build
 cmake & make
 ./main
-#or 
-./runtest.sh
 ```
-
 # Add to environment    
 ## !!!please modify " the path to " into the really path of your device
 ```
@@ -20,7 +19,6 @@ export LD_LIBRARY_PATH=
 /'the/path/to'/data-collection-service/lib/etc: \
 /'the/path/to'/data-collection-service/lib/opencv/amd64: \
 $LD_LIBRARY_PATH
-
 
 export LD_LIBRARY_PATH=/home/cq/data-collection-service/lib/mqtt/amd64:/home/cq/data-collection-service/lib/hdf5/amd64:/home/cq/data-collection-service/lib/etc:/home/cq/data-collection-service/lib/opencv/amd64:$LD_LIBRARY_PATH
 
@@ -50,7 +48,6 @@ arm-linux-gnueabihf-gcc \
   -lssl \
   -lcrypto \
   -lstdc++
-
 
 ./config no-asm shared no-async --prefix=/home/cq/Desktio/arm_openssl --cross-compile-prefix=arm-linux-gnueabihf
 
@@ -140,15 +137,4 @@ For open source projects, say how it is licensed.
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
 

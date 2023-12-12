@@ -70,7 +70,6 @@ message(STATUS "JSON_include_DIRS: ${JSON_INCLUDE_DIRS}!!")
 message(STATUS "boost_include: ${ETC_LIBRARY_PATH}!!")
 message(STATUS "x264_include: ${X264_INCLUDE_DIRS}!!")
 
-
 set(COMMON_LIBRARIES
     -lpaho-mqttpp3
     -lpaho-mqtt3as
