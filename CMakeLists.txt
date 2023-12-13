@@ -11,16 +11,12 @@ set(CMAKE_FIND_USE_SYSTEM_INCLUDE_PATH OFF)
 set(CMAKE_FIND_USE_SYSTEM_LIBRARY_PATH OFF)
 
 set(PLATFORM "amd64")  
-
+<<<<<<< HEAD
 if(CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
-
-    # set cross-compiler toolchain 
-    message("ARM 64-bit architecture detected.")
-    set(CMAKE_SYSTEM_NAME Linux)
-    set(CMAKE_C_COMPILER /usr/bin/aarch64-linux-gnu-gcc)
-    set(CMAKE_CXX_COMPILER /usr/bin/aarch64-linux-gnu-g++)
-    set(PLATFORM "aarch64") 
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")  
+    set(PLATFORM "aarch64")  
+    message("Detected aarch64 architecture")
+else()
+    message("Not aarch64 architecture")
 
 endif()
 
@@ -29,6 +25,8 @@ set(HDF5_LIBRARY_PATH "${CMAKE_SOURCE_DIR}/lib/hdf5/${PLATFORM}")
 set(OPENCV_LIBRARY_PATH "${CMAKE_SOURCE_DIR}/lib/opencv/${PLATFORM}")
 set(ETC_LIBRARY_PATH "${CMAKE_SOURCE_DIR}/lib/etc")
 set(X264_LIBRARY_PATH "${CMAKE_SOURCE_DIR}/lib/x264/${PLATFORM}")
+set(BOOST_INCLUDE_DIRS "${CMAKE_SOURCE_DIR}/include")
+
 
 find_path(BOOST_INCLUDE_DIRS NAMES boost/asio.hpp PATHS "${CMAKE_SOURCE_DIR}/include")
 find_path(HDF5_INCLUDE_DIRS NAMES H5Cpp.h PATHS "${CMAKE_SOURCE_DIR}/include/hdf5")
@@ -60,21 +58,34 @@ add_executable(rec0 src/rec_0.cpp)
 
 message(STATUS "PLATFORM: ${PLATFORM}")
 message(STATUS "CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}")
+<<<<<<< HEAD
+message(STATUS "HDF5_include_DIRS: ${HDF5_INCLUDE_DIRS}")
+message(STATUS "MqttCpp_Include_DIRS: ${MQTT_INCLUDE_DIRS}")
 message(STATUS "OpenCV_Include_DIRS: ${OPENCV_INCLUDE_DIRS}")
+message(STATUS "JSON_include_DIRS: ${JSON_INCLUDE_DIRS}")
+message(STATUS "BOOST_Include_DIRS: ${BOOST_INCLUDE_DIRS}")
+message(STATUS "x264_Include: ${X264_INCLUDE_DIRS}!!")
+
+message(STATUS "ETC_LIBS: ${ETC_LIBRARY_PATH}")
 message(STATUS "OpenCV_LIB: ${OPENCV_LIBRARY_PATH}")
 message(STATUS "HDF5_include_DIRS: ${HDF5_INCLUDE_DIRS}")
 message(STATUS "HDF5_LIB: ${HDF5_LIBRARY_PATH}")
 message(STATUS "MqttCpp_Include_DIRS: ${MQTT_INCLUDE_DIRS}")
 message(STATUS "MqttCpp_LIB: ${MQTT_LIBRARY_PATH}")
-message(STATUS "JSON_include_DIRS: ${JSON_INCLUDE_DIRS}!!")
-message(STATUS "boost_include: ${ETC_LIBRARY_PATH}!!")
-message(STATUS "x264_include: ${X264_INCLUDE_DIRS}!!")
+message(STATUS "x264_LIB: ${X264_LIBRARY_PATH}!!")
+
+link_directories(
+    ${HDF5_LIBRARY_PATH}
+    ${MQTT_LIBRARY_PATH}
+    ${OPENCV_LIBRARY_PATH}
+    
+)
+
 
 set(COMMON_LIBRARIES
     -lpaho-mqttpp3
     -lpaho-mqtt3as
     -lpaho-mqtt3c
-    -lssl
 )
 
 target_link_libraries(pub0
@@ -86,12 +97,13 @@ target_link_libraries(rec0
     -L${MQTT_LIBRARY_PATH}
     ${COMMON_LIBRARIES}
 )
-
-
+#amd64下需要添加
 target_link_libraries(coll PRIVATE 
     -L${HDF5_LIBRARY_PATH}
     -L${MQTT_LIBRARY_PATH}
     -L${OPENCV_LIBRARY_PATH}
+    -L${X264_LIBRARY_PATH}
+    -L${ETC_LIBRARY_PATH}
     -L${ETC_LIBRARY_PATH}
     -L${X264_LIBRARY_PATH}
     -lopencv_imgproc

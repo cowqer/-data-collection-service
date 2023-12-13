@@ -1,4 +1,6 @@
-# DATE_COLLECTION of FUSION （AMD64）
+
+# DATE_COLLECTION of FUSION （AARCH64）
+
 Use MQTT and HDF5 to collect sensors' data 
 then ,pack them in .hdf5 file and compress the file 
 at last, use MQTT to send to the server client's topic 

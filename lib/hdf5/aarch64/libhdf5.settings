@@ -1,15 +1,16 @@
-        SUMMARY OF THE HDF5 CONFIGURATION
-        =================================
+	    SUMMARY OF THE HDF5 CONFIGURATION
+	    =================================
 
 General Information:
 -------------------
-                   HDF5 Version: 1.14.3
-                  Configured on: Wed Nov  1 14:43:08 MDT 2023
-                  Configured by: builduser@
+                   HDF5 Version: 1.10.4
+                  Configured on: Mon, 13 Apr 2020 12:15:08 +0000
+                  Configured by: Debian
                     Host system: aarch64-unknown-linux-gnu
-              Uname information: Linux leming 5.1.16-1-ARCH #1 SMP Wed Jul 3 20:40:57 MDT 2019 aarch64 GNU/Linux
+              Uname information: Debian
                        Byte sex: little-endian
              Installation point: /usr
+		    Flavor name: serial
 
 Compiling Options:
 ------------------
@@ -21,75 +22,68 @@ Compiling Options:
 
 Linking Options:
 ----------------
-                      Libraries: shared
+                      Libraries: static, shared
   Statically Linked Executables: 
-                        LDFLAGS: -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now
-                     H5_LDFLAGS: 
+                        LDFLAGS: -Wl,-Bsymbolic-functions -Wl,-z,relro
+                     H5_LDFLAGS: -Wl,--version-script,$(top_srcdir)/debian/map_serial.ver
                      AM_LDFLAGS: 
-                Extra libraries: -lsz -lz -ldl -lm 
+                Extra libraries: -lpthread -lsz -lz -ldl -lm 
                        Archiver: ar
                        AR_FLAGS: cr
-                         Ranlib: ranlib
+                         Ranlib: aarch64-linux-gnu-ranlib
 
 Languages:
 ----------
                               C: yes
-                     C Compiler: /usr/lib/distcc/bin/gcc ( aarch64-unknown-linux-gnu-gcc (GCC) 12.1.0)
-                       CPPFLAGS: 
-                    H5_CPPFLAGS: -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L   -DNDEBUG -UH5_DEBUG_API 
+                     C Compiler: /usr/bin/gcc
+                       CPPFLAGS: -Wdate-time -D_FORTIFY_SOURCE=2
+                    H5_CPPFLAGS: -D_GNU_SOURCE -D_POSIX_C_SOURCE=200112L   -DNDEBUG -UH5_DEBUG_API
                     AM_CPPFLAGS: 
-                        C Flags: -march=armv8-a -O2 -pipe -fstack-protector-strong -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection
-                     H5 C Flags:  -std=c99  -Wall -Wcast-qual -Wconversion -Wextra -Wfloat-equal -Wformat=2 -Winit-self -Winvalid-pch -Wmissing-include-dirs -Wshadow -Wundef -Wwrite-strings -pedantic -Wno-c++-compat -Wlarger-than=2560 -Wlogical-op -Wframe-larger-than=16384 -Wpacked-bitfield-compat -Wsync-nand -Wno-unsuffixed-float-constants -Wdouble-promotion -Wtrampolines -Wstack-usage=8192 -Wmaybe-uninitialized -Wdate-time -Warray-bounds=2 -Wc99-c11-compat -Wduplicated-cond -Whsa -Wnormalized -Wnull-dereference -Wunused-const-variable -Walloca -Walloc-zero -Wduplicated-branches -Wformat-overflow=2 -Wformat-truncation=1 -Wattribute-alias -Wcast-align=strict -Wshift-overflow=2 -Wattribute-alias=2 -Wmissing-profile -Wc11-c2x-compat -fstdarg-opt -fdiagnostics-urls=never -fno-diagnostics-color -s  -Wbad-function-cast -Wcast-align -Wformat -Wimplicit-function-declaration -Wint-to-pointer-cast -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wold-style-definition -Wpacked -Wpointer-sign -Wpointer-to-int-cast -Wredundant-decls -Wstrict-prototypes -Wswitch -Wunused-but-set-variable -Wunused-variable -Wunused-function -Wunused-parameter -Wincompatible-pointer-types -Wint-conversion -Wshadow -Wrestrict -Wcast-function-type -Wmaybe-uninitialized -Wno-aggregate-return -Wno-inline -Wno-missing-format-attribute -Wno-missing-noreturn -Wno-overlength-strings -Wno-jump-misses-init -Wstrict-overflow=2 -Wno-suggest-attribute=const -Wno-suggest-attribute=noreturn -Wno-suggest-attribute=pure -Wno-suggest-attribute=format -Wno-suggest-attribute=cold -Wno-suggest-attribute=malloc -O3
+                        C Flags: -g -O2 -fdebug-prefix-map=$(top_srcdir)=. -fstack-protector-strong -Wformat -Werror=format-security
+                     H5 C Flags:  -std=c99  -pedantic -Wall -Wextra -Wbad-function-cast -Wc++-compat -Wcast-align -Wcast-qual -Wconversion -Wdeclaration-after-statement -Wdisabled-optimization -Wfloat-equal -Wformat=2 -Winit-self -Winvalid-pch -Wmissing-declarations -Wmissing-include-dirs -Wmissing-prototypes -Wnested-externs -Wold-style-definition -Wpacked -Wpointer-arith -Wredundant-decls -Wshadow -Wstrict-prototypes -Wswitch-default -Wswitch-enum -Wundef -Wunused-macros -Wunsafe-loop-optimizations -Wwrite-strings -finline-functions -s -Wno-inline -Wno-aggregate-return -Wno-missing-format-attribute -Wno-missing-noreturn -O
                      AM C Flags: 
                Shared C Library: yes
-               Static C Library: no
+               Static C Library: yes
 
 
                         Fortran: yes
-               Fortran Compiler: /usr/bin/gfortran ( GNU Fortran (GCC) 12.1.0)
-                  Fortran Flags: 
-               H5 Fortran Flags:  -std=f2008  -Waliasing -Wall -Wcharacter-truncation -Wextra -Wimplicit-interface -Wsurprising -Wunderflow -pedantic -Wintrinsics-std -Wimplicit-procedure -Wreal-q-constant -Wfunction-elimination -Wrealloc-lhs -Wrealloc-lhs-all -Wno-c-binding-type -Winteger-division -Wfrontend-loop-interchange  -fdiagnostics-urls=never -fno-diagnostics-color -s  -Wno-unused-dummy-argument -Wno-array-temporaries -O3
+               Fortran Compiler: /usr/bin/gfortran
+                  Fortran Flags: -g -O2 -fdebug-prefix-map=$(top_srcdir)=. -fstack-protector-strong
+               H5 Fortran Flags:  -pedantic -Wall -Wextra -Wunderflow -Wimplicit-interface -Wsurprising -Wno-c-binding-type  -s -O2
                AM Fortran Flags: 
          Shared Fortran Library: yes
-         Static Fortran Library: no
-               Module Directory: ${includedir}
+         Static Fortran Library: yes
 
                             C++: yes
-                   C++ Compiler: /usr/lib/distcc/bin/g++ ( aarch64-unknown-linux-gnu-g++ (GCC) 12.1.0)
-                      C++ Flags: -march=armv8-a -O2 -pipe -fstack-protector-strong -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -Wp,-D_GLIBCXX_ASSERTIONS
-                   H5 C++ Flags:   -std=c++11 -Wall -Wcast-qual -Wconversion -Wctor-dtor-privacy -Weffc++ -Wextra -Wfloat-equal -Wformat=2 -Winit-self -Winvalid-pch -Wmissing-include-dirs -Wnon-virtual-dtor -Wold-style-cast -Woverloaded-virtual -Wreorder -Wshadow -Wsign-promo -Wundef -Wwrite-strings -pedantic -Wlarger-than=2560 -Wlogical-op -Wframe-larger-than=16384 -Wpacked-bitfield-compat -Wsync-nand -Wdouble-promotion -Wtrampolines -Wstack-usage=8192 -Wmaybe-uninitialized -Wdate-time -Wopenmp-simd -Warray-bounds=2 -Wduplicated-cond -Whsa -Wnormalized -Wnull-dereference -Wunused-const-variable -Walloca -Walloc-zero -Wduplicated-branches -Wformat-overflow=2 -Wformat-truncation=1 -Wattribute-alias -Wcast-align=strict -Wshift-overflow=2 -Wattribute-alias=2 -Wmissing-profile -Wno-deprecated-copy -fstdarg-opt -fdiagnostics-urls=never -fno-diagnostics-color -s  -Wcast-align -Wmissing-declarations -Wpacked -Wredundant-decls -Wswitch -Wunused-but-set-variable -Wunused-function -Wunused-variable -Wunused-parameter -Wshadow -O3
+                   C++ Compiler: /usr/bin/g++
+                      C++ Flags: -g -O2 -fdebug-prefix-map=$(top_srcdir)=. -fstack-protector-strong -Wformat -Werror=format-security
+                   H5 C++ Flags:   -pedantic -Wall -W -Wundef -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wconversion -Wredundant-decls -Winline -Wsign-promo -Woverloaded-virtual -Wold-style-cast -Weffc++ -Wreorder -Wnon-virtual-dtor -Wctor-dtor-privacy -Wabi -finline-functions -s -O
                    AM C++ Flags: 
              Shared C++ Library: yes
-             Static C++ Library: no
+             Static C++ Library: yes
 
                            Java: yes
-                  Java Compiler: /usr/bin/java (openjdk 21 2023-09-19)
+                  Java Compiler: /usr/bin/java (openjdk 11.0.7-ea 2020-04-14)
 
 
 Features:
 ---------
-                     Parallel HDF5: no
-  Parallel Filtered Dataset Writes: no
-                Large Parallel I/O: no
-                High-level library: yes
-Dimension scales w/ new references: no
-                  Build HDF5 Tests: yes
-                  Build HDF5 Tools: yes
-                   Build GIF Tools: no
-                      Threadsafety: no
-               Default API mapping: v114
-    With deprecated public symbols: yes
-            I/O filters (external): deflate(zlib),szip(encoder)
-                     Map (H5M) API: no
-                        Direct VFD: no
-                        Mirror VFD: no
-                     Subfiling VFD: no
-                (Read-Only) S3 VFD: no
-              (Read-Only) HDFS VFD: no
-    Packages w/ extra debug output: none
-                       API tracing: no
-              Using memory checker: no
-            Function stack tracing: no
-                  Use file locking: best-effort
-         Strict file format checks: no
-      Optimization instrumentation: no
+                   Parallel HDF5: no
+Parallel Filtered Dataset Writes: no
+              Large Parallel I/O: no
+              High-level library: yes
+                    Threadsafety: yes
+             Default API mapping: v18
+  With deprecated public symbols: yes
+          I/O filters (external): deflate(zlib),szip(encoder)
+                             MPE: no
+                      Direct VFD: no
+                         dmalloc: no
+  Packages w/ extra debug output: none
+                     API tracing: no
+            Using memory checker: no
+ Memory allocation sanity checks: no
+             Metadata trace file: no
+          Function stack tracing: no
+       Strict file format checks: no
+    Optimization instrumentation: no
