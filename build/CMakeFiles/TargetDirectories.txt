@@ -1,5 +1,0 @@
-/home/cq/Desktop/verify/data-collection/build/CMakeFiles/rebuild_cache.dir
-/home/cq/Desktop/verify/data-collection/build/CMakeFiles/edit_cache.dir
-/home/cq/Desktop/verify/data-collection/build/CMakeFiles/rec0.dir
-/home/cq/Desktop/verify/data-collection/build/CMakeFiles/pub0.dir
-/home/cq/Desktop/verify/data-collection/build/CMakeFiles/coll.dir

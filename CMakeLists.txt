@@ -66,6 +66,7 @@ message(STATUS "ETC_LIBS: ${ETC_LIBRARY_PATH}")
 message(STATUS "OpenCV_LIB: ${OPENCV_LIBRARY_PATH}")
 message(STATUS "HDF5_LIB: ${HDF5_LIBRARY_PATH}")
 message(STATUS "MqttCpp_LIB: ${MQTT_LIBRARY_PATH}")
+message(STATUS "x264_LIB: ${X264_LIBRARY_PATH}!!")
 
 link_directories(
     ${HDF5_LIBRARY_PATH}
@@ -95,6 +96,7 @@ target_link_libraries(coll PRIVATE
     -L${MQTT_LIBRARY_PATH}
     -L${OPENCV_LIBRARY_PATH}
     -L${X264_LIBRARY_PATH}
+    -L${ETC_LIBRARY_PATH}
     -lopencv_imgproc
     -lopencv_core
     -lopencv_imgcodecs
@@ -105,6 +107,7 @@ target_link_libraries(coll PRIVATE
     -lsz
     -lhdf5
     -lhdf5_cpp
+    -lhdf5_serial
     -lcrypto
     -lpthread
     -lx264
