@@ -44,10 +44,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/fusion/Desktop/data-collection-service
+CMAKE_SOURCE_DIR = /home/fusion/Desktop/data-collection
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/fusion/Desktop/data-collection-service/build
+CMAKE_BINARY_DIR = /home/fusion/Desktop/data-collection/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -78,14 +78,14 @@ clean: CMakeFiles/coll.dir/clean
 CMakeFiles/rec0.dir/all:
 	$(MAKE) -f CMakeFiles/rec0.dir/build.make CMakeFiles/rec0.dir/depend
 	$(MAKE) -f CMakeFiles/rec0.dir/build.make CMakeFiles/rec0.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fusion/Desktop/data-collection-service/build/CMakeFiles --progress-num=11,12 "Built target rec0"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fusion/Desktop/data-collection/build/CMakeFiles --progress-num=11,12 "Built target rec0"
 .PHONY : CMakeFiles/rec0.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/rec0.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fusion/Desktop/data-collection-service/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fusion/Desktop/data-collection/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rec0.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fusion/Desktop/data-collection-service/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fusion/Desktop/data-collection/build/CMakeFiles 0
 .PHONY : CMakeFiles/rec0.dir/rule
 
 # Convenience name for target.
@@ -105,14 +105,14 @@ CMakeFiles/rec0.dir/clean:
 CMakeFiles/pub0.dir/all:
 	$(MAKE) -f CMakeFiles/pub0.dir/build.make CMakeFiles/pub0.dir/depend
 	$(MAKE) -f CMakeFiles/pub0.dir/build.make CMakeFiles/pub0.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fusion/Desktop/data-collection-service/build/CMakeFiles --progress-num=9,10 "Built target pub0"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fusion/Desktop/data-collection/build/CMakeFiles --progress-num=9,10 "Built target pub0"
 .PHONY : CMakeFiles/pub0.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/pub0.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fusion/Desktop/data-collection-service/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fusion/Desktop/data-collection/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pub0.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fusion/Desktop/data-collection-service/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fusion/Desktop/data-collection/build/CMakeFiles 0
 .PHONY : CMakeFiles/pub0.dir/rule
 
 # Convenience name for target.
@@ -132,14 +132,14 @@ CMakeFiles/pub0.dir/clean:
 CMakeFiles/coll.dir/all:
 	$(MAKE) -f CMakeFiles/coll.dir/build.make CMakeFiles/coll.dir/depend
 	$(MAKE) -f CMakeFiles/coll.dir/build.make CMakeFiles/coll.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fusion/Desktop/data-collection-service/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target coll"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fusion/Desktop/data-collection/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target coll"
 .PHONY : CMakeFiles/coll.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/coll.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fusion/Desktop/data-collection-service/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fusion/Desktop/data-collection/build/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/coll.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fusion/Desktop/data-collection-service/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fusion/Desktop/data-collection/build/CMakeFiles 0
 .PHONY : CMakeFiles/coll.dir/rule
 
 # Convenience name for target.

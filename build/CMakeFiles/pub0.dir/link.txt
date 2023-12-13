@@ -1,1 +1,1 @@
-g++   -pthread   -pthread CMakeFiles/pub0.dir/src/pub_0.cpp.o  -o pub0  -L/home/fusion/Desktop/data-collection-service/lib/mqtt/aarch64 -lpaho-mqttpp3 -lpaho-mqtt3as -lpaho-mqtt3c /usr/lib/aarch64-linux-gnu/libssl.so.1.1 
+g++     CMakeFiles/pub0.dir/src/pub_0.cpp.o  -o pub0  -L/home/fusion/Desktop/data-collection/lib/mqtt/aarch64 -lpaho-mqttpp3 -lpaho-mqtt3as -lpaho-mqtt3c 
