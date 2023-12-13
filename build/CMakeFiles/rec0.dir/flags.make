@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/fusion/Desktop/data-collection/include/hdf5 -I/home/fusion/Desktop/data-collection/include/mqtt -I/home/fusion/Desktop/data-collection/include/opencv -I/home/fusion/Desktop/data-collection/include/json -I/home/fusion/Desktop/data-collection/include -I/home/fusion/Desktop/data-collection/include/x264 
+CXX_INCLUDES = -I/home/cq/Desktop/verify/data-collection/include/hdf5 -I/home/cq/Desktop/verify/data-collection/include/mqtt -I/home/cq/Desktop/verify/data-collection/include/opencv -I/home/cq/Desktop/verify/data-collection/include/json -I/home/cq/Desktop/verify/data-collection/include -I/home/cq/Desktop/verify/data-collection/include/x264 
 
