@@ -1,20 +1,20 @@
+# DATE_COLLECTION of FUSION （AARCH64 & AMD64）
 
-# DATE_COLLECTION of FUSION （AARCH64）
-
-Use MQTT and HDF5 to collect sensors' data 
-then ,pack them in .hdf5 file and compress the file 
-at last, use MQTT to send to the server client's topic 
+Use To: Collect sensors' data "Camera Lidar Radar GPS IMU"
+ 
+Collect sensors' data and pack them in .hdf5 file and use x264 compress the image
+At last, use MQTT to send to the server client's topic 
 ## Getting started
 ```
-mkdir build 
+mkdir build
 cd build
-cmake & make
-./main
+cmake ..
+make
+./coll
 ```
-# Add to environment    
-## !!!please modify " the path to " into the really path of your device
+## Add to environment    
+### !!!please modify " the path to " into the really path of your device
 ```
-
 export LD_LIBRARY_PATH=
 /'the/path/to'/data-collection-service/lib/mqtt/amd64: \
 /'the/path/to'/data-collection-service/lib/hdf5/amd64: \
@@ -22,8 +22,14 @@ export LD_LIBRARY_PATH=
 /'the/path/to'/data-collection-service/lib/opencv/amd64: \
 $LD_LIBRARY_PATH
 
-export LD_LIBRARY_PATH=/home/cq/data-collection-service/lib/mqtt/amd64:/home/cq/data-collection-service/lib/hdf5/amd64:/home/cq/data-collection-service/lib/etc:/home/cq/data-collection-service/lib/opencv/amd64:$LD_LIBRARY_PATH
+sudo vim ~/.bashrc
 
+#add below into the bottom of ".bashrc "
+
+export LD_LIBRARY_PATH=/home/cq/data-collection-service/lib/mqtt/amd64:/home/cq/data-collection-service/lib/hdf5/amd64:/home/cq/data-collection-service/lib/etc:/home/cq/data-collection-service/lib/opencv/amd64:/home/cq/data-collection-service/lib/x264/amd64:$LD_LIBRARY_PATH
+
+sudo source ~/.bashrc
+sudo ldconfig
 ```
 
 ## IF ERROR: no found libpthread_nonshared.a(choose one of below commads):
@@ -131,7 +137,8 @@ For people who want to make changes to your project, it's helpful to have some d
 You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
 
 ## Authors and acknowledgment
-
+- [ ] [cowqer](https://github.com/cowqer)
+- [ ] [cq's blog](https://www.seekyou.top/)
 
 ## License
 For open source projects, say how it is licensed.

@@ -16,7 +16,6 @@ if(CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
     message("Detected aarch64 architecture")
 else()
     message("Not aarch64 architecture")
-
 endif()
 
 set(MQTT_LIBRARY_PATH "${CMAKE_SOURCE_DIR}/lib/mqtt/${PLATFORM}")
@@ -79,7 +78,6 @@ link_directories(
     
 )
 
-
 set(COMMON_LIBRARIES
     -lpaho-mqttpp3
     -lpaho-mqtt3as
@@ -101,7 +99,7 @@ target_link_libraries(coll PRIVATE
     -L${MQTT_LIBRARY_PATH}
     -L${OPENCV_LIBRARY_PATH}
     -L${X264_LIBRARY_PATH}
-    -L${ETC_LIBRARY_PATH}
+    #-L${ETC_LIBRARY_PATH}
     -lopencv_imgproc
     -lopencv_core
     -lopencv_imgcodecs
