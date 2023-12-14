@@ -8,21 +8,25 @@
 #include <thread>
 #include <chrono>
 #include <boost/asio.hpp>
+#include <atomic>
 #include "H5Cpp.h"
 
 //根文件下的相对路径
 const H5std_string LIDAR_GROUP_NAME("/Lidar");
 
 //系统数据
-extern int File_Index;
+extern int Writing_Index;
 extern hsize_t timeStamp; 
+extern hsize_t currentTimestamp; 
 extern std::string Lidar_Port; 
 extern std::string LidarID;
+extern std::atomic<bool> thread5Ready;
 
 //初始化Lidar数据
 const int Lidar_group = 1;
 extern int Lidar_line;
 extern int Lidar_DataWidth;
+extern int Lidar_BaudRate;
 const int Lidar_Entry= 6; 
 extern std::vector<double> Lidar_Data;
 

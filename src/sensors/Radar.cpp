@@ -29,14 +29,19 @@ void Radar_collection(void)
 {
      while(true)
      {
-
+           while (!thread4Ready.load(std::memory_order::memory_order_acquire)) {
+                  // 等待 thread4Ready 为 true
+                  std::this_thread::sleep_for(std::chrono::milliseconds(1));
+                  }
+                  Radar_Data_writing(0, currentTimestamp);
+      thread4Ready.store(false, std::memory_order::memory_order_release);
      }
 }
 
 void Radar_Data_writing(int RadarIndex, hsize_t currentTimeStamp)
 {
     //写入数据
-    H5::H5File file("Data_"+ std::to_string(File_Index-1)+".h5", H5F_ACC_RDWR);
+    H5::H5File file("Data_"+ std::to_string(Writing_Index)+".h5", H5F_ACC_RDWR);
     H5::Group RadarGroup = file.openGroup(RADAR_GROUP_NAME);
     /*
     std::string subDataSet = "RadarData_" + std::to_string(RadarIndex);       

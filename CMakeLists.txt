@@ -11,13 +11,11 @@ set(CMAKE_FIND_USE_SYSTEM_INCLUDE_PATH OFF)
 set(CMAKE_FIND_USE_SYSTEM_LIBRARY_PATH OFF)
 
 set(PLATFORM "amd64")  
-<<<<<<< HEAD
 if(CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
     set(PLATFORM "aarch64")  
     message("Detected aarch64 architecture")
 else()
     message("Not aarch64 architecture")
-
 endif()
 
 set(MQTT_LIBRARY_PATH "${CMAKE_SOURCE_DIR}/lib/mqtt/${PLATFORM}")
@@ -58,7 +56,6 @@ add_executable(rec0 src/rec_0.cpp)
 
 message(STATUS "PLATFORM: ${PLATFORM}")
 message(STATUS "CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}")
-<<<<<<< HEAD
 message(STATUS "HDF5_include_DIRS: ${HDF5_INCLUDE_DIRS}")
 message(STATUS "MqttCpp_Include_DIRS: ${MQTT_INCLUDE_DIRS}")
 message(STATUS "OpenCV_Include_DIRS: ${OPENCV_INCLUDE_DIRS}")
@@ -81,7 +78,6 @@ link_directories(
     
 )
 
-
 set(COMMON_LIBRARIES
     -lpaho-mqttpp3
     -lpaho-mqtt3as
@@ -103,9 +99,7 @@ target_link_libraries(coll PRIVATE
     -L${MQTT_LIBRARY_PATH}
     -L${OPENCV_LIBRARY_PATH}
     -L${X264_LIBRARY_PATH}
-    -L${ETC_LIBRARY_PATH}
-    -L${ETC_LIBRARY_PATH}
-    -L${X264_LIBRARY_PATH}
+    #-L${ETC_LIBRARY_PATH}
     -lopencv_imgproc
     -lopencv_core
     -lopencv_imgcodecs

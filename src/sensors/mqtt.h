@@ -11,6 +11,7 @@
 #include "mqtt/async_client.h"
 
 extern std::atomic<bool> thread2Ready;
+extern int image_Compress_Flag;
 
 void send_hdf5_file(const std::string &filename, const std::string &topic, mqtt::async_client &client);
 
