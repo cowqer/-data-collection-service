@@ -16,13 +16,21 @@ std::ifstream config_file("../config.json");
 nlohmann::json config;
 
 //系统参数
+int System_Rates;
+int System_Time;
 int File_Index = 0;
+int Writing_Index = 0;
 hsize_t timeStamp; 
 hsize_t currentTimestamp = 0; 
 const int numThreads = 8;
 std::atomic<bool> thread0Ready(false);
 std::atomic<bool> thread1Ready(false);
 std::atomic<bool> thread2Ready(false);
+std::atomic<bool> thread3Ready(false);
+std::atomic<bool> thread4Ready(false);
+std::atomic<bool> thread5Ready(false);
+std::atomic<bool> thread6Ready(false);
+std::atomic<bool> thread7Ready(false);
 std::chrono::system_clock::time_point targetTime;
 
 //串口参数
@@ -43,11 +51,18 @@ std::string VehicleID;
 //Sensor参数
 int image_Width;
 int image_Height;
+int image_Rates;
+int image_Compress_Flag;
 int Lidar_line;
 int Lidar_DataWidth;
+int Lidar_BaudRate;
+int IMU_BaudRate;
+int GPS_BaudRate;
+float GPS_Rates;
 
 //准备数据
 std::vector<uint8_t> imageData;
+std::vector<cv::Mat> CameraData;
 std::vector<double> Lidar_Data;
 std::vector<double> GPS_Data;
 std::vector<float> IMU_Data;

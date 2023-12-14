@@ -60,8 +60,11 @@ void run_mqtt_client(const std::string &broker_address) {
 
         while (true) {
             while(!thread2Ready.load(std::memory_order::memory_order_acquire)){
-
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            }
+            if(image_Compress_Flag==1)
+            {
+            std::this_thread::sleep_for(std::chrono::milliseconds(2000));
             }
             send_hdf5_file("Data_"+ std::to_string(id_nums)+".h5", topic, client);
             id_nums++;      

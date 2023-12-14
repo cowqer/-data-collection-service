@@ -28,9 +28,13 @@ void IMU_collection(void)
     boost::asio::io_service io;
     boost::asio::serial_port port(io);
     port.open(IMU_Port); 
-    port.set_option(boost::asio::serial_port_base::baud_rate(921600)); 
+    port.set_option(boost::asio::serial_port_base::baud_rate(IMU_BaudRate)); 
     while(true)
     {
+     while (!thread7Ready.load(std::memory_order::memory_order_acquire)) {
+            // 等待 thread7Ready 为 true
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            }
     //IMU接口
     uint8_t data[1];
     boost::asio::read(port, boost::asio::buffer(data, 1));
@@ -53,6 +57,8 @@ void IMU_collection(void)
                }
            }
        }
+       IMU_Data_writing(0, currentTimestamp);
+       thread7Ready.store(false, std::memory_order::memory_order_release);
     }
 }
 
@@ -60,7 +66,7 @@ void IMU_collection(void)
 void  IMU_Data_writing(int IMUIndex,hsize_t currentTimeStamp)
 {
     //写入数据
-    H5::H5File file("Data_"+ std::to_string(File_Index-1)+".h5", H5F_ACC_RDWR);
+    H5::H5File file("Data_"+ std::to_string(Writing_Index)+".h5", H5F_ACC_RDWR);
     H5::Group IMUGroup = file.openGroup(IMU_GROUP_NAME);
     std::string subDataSet = "IMUData_" + std::to_string(IMUIndex);       
     H5::DataSet IMUDataset = IMUGroup.openDataSet(subDataSet); 

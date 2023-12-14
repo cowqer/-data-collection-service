@@ -8,20 +8,24 @@
 #include <thread>
 #include <chrono>
 #include <boost/asio.hpp>
+#include <atomic>
 #include "H5Cpp.h"
 
 //根文件下的相对路径
 const H5std_string IMU_GROUP_NAME("/IMU");
 
 //系统数据
-extern int File_Index;
+extern int Writing_Index;
 extern hsize_t timeStamp; 
+extern hsize_t currentTimestamp; 
 extern std::string IMU_Port;
 extern std::string IMUID;
+extern std::atomic<bool> thread7Ready;
 
 //初始化IMU数据
 const int IMU_group = 1; 
 const int IMU_Entry= 9; 
+extern int IMU_BaudRate;
 extern std::vector<float> IMU_Data;
 
 //IMU初始化
