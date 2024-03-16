@@ -12,6 +12,12 @@ cmake ..
 make
 ./coll
 ```
+## maybe need ffmpeg：
+```
+sudo apt update
+sudo apt install ffmpeg libavcodec-extra libavformat-dev libswscale-dev libavutil-dev
+```
+
 ## Add to environment    
 ### !!!please modify " the path to " into the really path of your device
 ```
