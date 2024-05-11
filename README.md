@@ -1,6 +1,6 @@
 # DATE_COLLECTION of FUSION （AARCH64 & AMD64）
-
-Use To: Collect sensors' data "Camera Lidar Radar GPS IMU"
+## （仅存档自Fusion NAS上搭建的gitlab） 
+Function： Collect sensors' data "Camera Lidar Radar GPS IMU"
  
 Collect sensors' data and pack them in .hdf5 file and use x264 compress the image
 At last, use MQTT to send to the server client's topic 
